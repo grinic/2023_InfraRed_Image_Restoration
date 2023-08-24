@@ -118,6 +118,5 @@ For each dataset, generates a csv file containing the following information for 
 - structural similarity index (relative to ground truth)
 - Mean square error (relative to ground truth)
 
-## 06_plot_quantification_csbdeep.py
-
-## 07_restore_TL.py
+## 06_restore_TL.py
+Restore timelapse datasets, which should be arranged as the training dataset, except that only one channel is provided, and one parameter file is provided per timepoint.
