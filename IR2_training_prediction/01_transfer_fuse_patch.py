@@ -35,10 +35,8 @@ Generate patches if you want to use this DataSet as training for a model
 
 print('***Generating patches***')
 probmeths = ['otsu' for i in inpaths]
-# probmeths[0] = 'flat'
 optCovs = [False for i in inpaths]
 N_patches = [5000 for i in inpaths]
-# N_patches[0] = 3000
 
 i = 0
 for path, probmeth, optcov, npatch in zip(inpaths, probmeths, optCovs, N_patches):
@@ -58,7 +56,7 @@ for path, probmeth, optcov, npatch in zip(inpaths, probmeths, optCovs, N_patches
     if not rd._is_patches():
         # play around with parameters to make a good balance of patches
         # as visually inspected by looking at the recorded patch tif file
-        rd.create_patches(source='raw', probMethod=probmeth, patchSize=(32,128,128), N_patches=npatch, bias=0.75,
+        rd.create_patches(probMethod=probmeth, patchSize=(32,128,128), N_patches=npatch, bias=0.75,
                         optimizeCoverage=optcov, cThr=75, nCoverage=1, thresholdCorrelation=False,
                         maskFilter=True, mask=mask,
                         localRegister=True)

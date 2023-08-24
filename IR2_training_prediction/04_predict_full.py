@@ -17,41 +17,18 @@ os.environ['CUDA_VISIBLE_DEVICES']='1'
 register images and save them in the Registered_SIFT subfolder
 generate patches if you want to use this DataSet as training for a model
 '''
-infolder = os.path.join('..','..','fish_h2bGFP_2-3-4dpf_nGFP-CF800')
 
 pathsData = [
-    # os.path.join(infolder,'2dpf','fish1_2021-04-14'),
-    # os.path.join(infolder,'2dpf','fish2_2021-04-14'),
-    # os.path.join(infolder,'2dpf','fish3_2021-04-14'),
-    # os.path.join(infolder,'2dpf','fish4_2021-04-14'),
-    # os.path.join(infolder,'2dpf','fish5_2021-04-14'),
-
-    # os.path.join(infolder,'3dpf','fish1_2021-04-14'),
-    # os.path.join(infolder,'3dpf','fish2_2021-04-14'),
-    # os.path.join(infolder,'3dpf','fish3_2021-04-14'),
-    # os.path.join(infolder,'3dpf','fish4_2021-04-14'),
-    os.path.join(infolder,'3dpf','fish5_2021-04-14'),
-
-    os.path.join(infolder,'4dpf','fish1_2021-04-14'),
-    os.path.join(infolder,'4dpf','fish2_2021-04-14'),
-    os.path.join(infolder,'4dpf','fish3_2021-04-14'),
-    os.path.join(infolder,'4dpf','fish4_2021-04-14'),
-    os.path.join(infolder,'4dpf','fish5_2021-04-14'),
+    os.path.join('..','Samples','zebrafish_h2bGFP_4dpf_nGFP_CF800'),
     ]
 
 
-pathModel = os.path.join('..','..','fish_h2bGFP_2-3-4dpf_nGFP-CF800_models')
-
-#####
-# model 28hpf
-#####
-
+pathModels = os.path.join('..','Samples','zebrafish_h2bGFP_4dpf_nGFP_CF800','model')
 modelNames = [
-   'model_2dpf_1fish_patches32x128x128_2layers',
-   'model_3dpf_1fish_patches32x128x128_2layers',
-   'model_4dpf_1fish_patches32x128x128_2layers',
+   'model_4dpf_1fish_2layers',
    ]
 
+###############################################################################
 
 for pathData in pathsData:
     
@@ -60,7 +37,7 @@ for pathData in pathsData:
         start = time.time()
         print('\n**********')
         print('*** Data: ',pathData,'***')
-        print('*** Model: ',os.path.join(pathModel,modelName),'***')
+        print('*** Model: ',os.path.join(pathModels,modelName),'***')
     
         if not os.path.exists(os.path.join(pathData,'restored1_with_'+modelName)):
             os.mkdir(os.path.join(pathData,'restored1_with_'+modelName))
@@ -84,7 +61,7 @@ for pathData in pathsData:
                 _input = np.expand_dims(_input,0)
                 print(_input.shape)
         
-                model = CARE(config=None, name=modelName, basedir=pathModel)
+                model = CARE(config=None, name=modelName, basedir=pathModels)
         
                 r = model.predict(_input, axes='CZYX', n_tiles=(1,4,16,16))
                 #restored = (restored-np.min(restored))/(np.max(restored)-np.min(restored))

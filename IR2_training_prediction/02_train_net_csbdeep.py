@@ -14,18 +14,17 @@ import numpy as np
 
 
 #%%
-master_folder = os.path.join('W:',os.sep,'people','gritti','IRIR','h2bGFP_2-3-4dpf_nGFP-CF800_new')
-folders = [
-            # os.path.join(master_folder,'2dpf','fish1_2021-04-14'),
-            # os.path.join(master_folder,'3dpf','fish1_2021-04-14'),
-            os.path.join(master_folder,'4dpf','fish1_2021-04-14')
-           ]
-pathsData = [ os.path.join(master_folder,f) for f in folders ]
+pathsData = [ os.path.join('..','Samples','zebrafish_h2bGFP_4dpf_nGFP_CF800'), ]
 
-pathModel = os.path.join('W:',os.sep,'people','gritti','IRIR','h2bGFP_2-3-4dpf_nGFP-CF800_new_models')
-modelName = 'model_4dpf_1fish_patches32x128x128_2layers'
+pathModel = os.path.join('..','Samples','zebrafish_h2bGFP_4dpf_nGFP_CF800','model')
+modelName = 'model_4dpf_1fish_2layers'
 
 N_max = None
+
+train_batch_size = 8
+unet_n_depth = 2
+
+######################################################################################
 
 X = []
 Y = []
@@ -88,24 +87,11 @@ print(axes)
 c = axes_dict(axes)['C']
 n_channel_in, n_channel_out = X.shape[c], Y.shape[c]
 
-train_batch_size = 8
 train_steps_per_epoch = int(np.ceil(X.shape[0]/train_batch_size))
-config = Config(axes, n_channel_in, n_channel_out, unet_n_depth=2, 
+config = Config(axes, n_channel_in, n_channel_out, unet_n_depth=unet_n_depth, 
                 train_steps_per_epoch=train_steps_per_epoch, 
                 train_epochs=100, 
                 train_batch_size=train_batch_size)
 model = CARE(config, modelName, basedir=pathModel)
 
 history = model.train(X,Y, validation_data=(X_val,Y_val))
-# rd.print_info()
-
-# ##%%
-# '''
-# create model and train on the input dataset of the train_model function
-# '''
-# paramFileModel = os.path.join(pathModel,'model_params.txt')
-# m = modelRest(paramFileModel, verbose = 1)
-# m.print_info()
-
-# if not m._is_trained():
-#     m.train_model(rd)

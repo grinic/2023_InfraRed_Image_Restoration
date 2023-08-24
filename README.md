@@ -83,3 +83,41 @@ __ sample_folder
 
 ```
 
+## 02_train_net_csbdeep.py
+Script to train a standard UNet CARE network.
+
+Parameters:
+- pathsData: list of paths pointing to the datasets used for training.
+- pathModel: path to CARE model.
+- modelName
+- N_max: set maximum number of patches. Default: None.
+- train_batc_size: Default: 8.
+- unet_n_depth: number of UNet layers. Default: 2.
+
+## 03_predict_patches.py
+Use the trained model to predict the patches for a list of datasets.
+Can use multiple models to compare results.
+
+Parameters:
+- pathsData
+- pathModels
+- modelNames
+
+## 04_predict_full.py
+Use the trained model to predict the whole tif images for a list of datasets.
+Can use multiple models to compare results.
+
+Parameters:
+- pathsData
+- pathModels
+- modelNames
+
+## 05_quantify_patches.py
+For each dataset, generates a csv file containing the following information for each patch reconstructed:
+- Information content
+- structural similarity index (relative to ground truth)
+- Mean square error (relative to ground truth)
+
+## 06_plot_quantification_csbdeep.py
+
+## 07_restore_TL.py
