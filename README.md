@@ -29,13 +29,13 @@ Here we provide a step-by-step guide:
 ### Data Management
 Image data should be tif files accompanied by a txt metadata file.
 Data structure examples are provided in the `Sample` subfolders. Images should be arranged as follows:
-`
+```
 __ sample_folder
  |
  |__ image_channel=ch00.tif
  |__ image_channel=ch01.tif
  |__ image_channel=ch[CCC]_params.txt
-`
+```
 
 Where `image_channel=ch[CCC]_params.txt` should contain at least the XYZ dimension of the tif dataset in the following format:
 `

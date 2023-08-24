@@ -1,0 +1,15 @@
+555:ROIWidth
+555:ROIHeight
+0.100000:Exposure Time /s
+9.998720:Frame Rate /Hz
+Rolling:Shutter
+TRUE:Overlap Mode
+110:Planes
+5.000000:Plane Spacing /um
+10.001280:Stack Duration /s
+0.049994:Stack Velocity /mm/s
+2.000000:dt Stack /s
+10.000000:488 nm Power /percent
+525/50 bp:488 nm Filter
+10.000000:640 nm Power /percent
+697/60 bp:640 nm Filter
