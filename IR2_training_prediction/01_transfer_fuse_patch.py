@@ -21,14 +21,8 @@ from raw2tiff import convert2tiff,fuse_illuminations
 '''
 load, fuse and save files in new location
 '''
-infolder = os.path.join('W:',os.sep,'people','gritti','IRIR','h2bGFP_2-3-4dpf_nGFP-CF800_new')
 inpaths = [
-    os.path.join(infolder,'4dpf','fish1_2021-04-14'),
-    ]
-
-outfolder = os.path.join('W:',os.sep,'people','gritti','IRIR','h2bGFP_2-3-4dpf_nGFP-CF800_new')
-outpaths = [
-    os.path.join(infolder,'4dpf','fish1_2021-04-14'),
+    os.path.join('..','Samples','zebrafish_h2bGFP_4dpf_nGFP_CF800'),
     ]
 
 create_Patches = True
@@ -40,17 +34,16 @@ Generate patches if you want to use this DataSet as training for a model
 '''
 
 print('***Generating patches***')
-paths = outpaths
-probmeths = ['otsu' for i in paths]
+probmeths = ['otsu' for i in inpaths]
 # probmeths[0] = 'flat'
-optCovs = [False for i in paths]
-N_patches = [5000 for i in paths]
+optCovs = [False for i in inpaths]
+N_patches = [5000 for i in inpaths]
 # N_patches[0] = 3000
 
 i = 0
-for path, probmeth, optcov, npatch in zip(paths, probmeths, optCovs, N_patches):
+for path, probmeth, optcov, npatch in zip(inpaths, probmeths, optCovs, N_patches):
     print('---------------------------------------------')
-    print('%02d / %02d:\n'%(i,len(paths)),path)
+    print('%02d / %02d:\n'%(i,len(inpaths)),path)
     print('---------------------------------------------')
     start = time.time()
     paramFileData = glob.glob(os.path.join(path,'*.txt'))[0]

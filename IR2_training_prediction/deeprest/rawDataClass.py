@@ -93,7 +93,7 @@ class rawData(object):
         elif probMethod == 'pxl':
             return patFun.getPixelProbExtraction_PxlBased
    
-    def create_patches(self, patchSize=(16,64,64), N_patches=100000, source='reg', probMethod='otsu',
+    def create_patches(self, patchSize=(16,64,64), N_patches=100000, source='raw', probMethod='otsu',
                        chOtsu=-1, nWindow=1, OtsuFactor=.5, exponent=2., bias=0.75,
                        optimizeCoverage=False, cThr=75, nCoverage=1, ignoreZeros=True,
                        thresholdCorrelation=False, rThr = 0.7,
