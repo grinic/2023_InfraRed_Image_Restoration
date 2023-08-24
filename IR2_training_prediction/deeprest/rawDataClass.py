@@ -6,7 +6,7 @@ Created on Fri Dec  7 14:33:58 2018
 @author: ngritti
 """
 
-import glob, os, re, copy
+import glob, os, re
 import numpy as np
 from functools import reduce
 from . import imgHandling, patFun

@@ -21,31 +21,6 @@ from raw2tiff import convert2tiff,fuse_illuminations
 '''
 load, fuse and save files in new location
 '''
-ang = 1
-ills = [1,2]
-channelss = [
-            [1,3],
-            [1,2],
-            [1,2],
-            [1,2],
-            [1,2],
-
-            [1,3],
-            [1,2],
-            [1,2],
-            [1,2],
-            [1,2],
-
-            [1,4],
-            [1,3],
-            [1,3],
-            [1,3],
-            [1,3],
-            ]
-fuse_ills = False
-
-create_Patches = True
-
 infolder = os.path.join('W:',os.sep,'people','gritti','IRIR','h2bGFP_2-3-4dpf_nGFP-CF800_new')
 inpaths = [
     os.path.join(infolder,'4dpf','fish1_2021-04-14'),
@@ -53,24 +28,10 @@ inpaths = [
 
 outfolder = os.path.join('W:',os.sep,'people','gritti','IRIR','h2bGFP_2-3-4dpf_nGFP-CF800_new')
 outpaths = [
-    os.path.join(infolder,'2dpf','fish1_2021-04-14'),
-    os.path.join(infolder,'2dpf','fish2_2021-04-14'),
-    os.path.join(infolder,'2dpf','fish3_2021-04-14'),
-    os.path.join(infolder,'2dpf','fish4_2021-04-14'),
-    os.path.join(infolder,'2dpf','fish5_2021-04-14'),
-
-    os.path.join(infolder,'3dpf','fish1_2021-04-14'),
-    os.path.join(infolder,'3dpf','fish2_2021-04-14'),
-    os.path.join(infolder,'3dpf','fish3_2021-04-14'),
-    os.path.join(infolder,'3dpf','fish4_2021-04-14'),
-    os.path.join(infolder,'3dpf','fish5_2021-04-14'),
-
     os.path.join(infolder,'4dpf','fish1_2021-04-14'),
-    os.path.join(infolder,'4dpf','fish2_2021-04-14'),
-    os.path.join(infolder,'4dpf','fish3_2021-04-14'),
-    os.path.join(infolder,'4dpf','fish4_2021-04-14'),
-    os.path.join(infolder,'4dpf','fish5_2021-04-14'),
     ]
+
+create_Patches = True
 
 #############################################################################################################
 
