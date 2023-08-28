@@ -75,11 +75,15 @@ __ sample_folder
    |__ Otsu_mask_image_channel=[CCC].tif
    |__ tif_gt
    | |
-   | |__ patch_XXX.tif
+   | |__ patch_001.tif
+   | |__ patch_002.tif
+   | |__ ...
    |
    |__tif_input
      |
-     |__ patch_XXX.tif
+     |__ patch_001.tif
+     |__ patch_002.tif
+     |__ ...
 
 ```
 
@@ -91,7 +95,7 @@ Parameters:
 - pathModel: path to CARE model.
 - modelName
 - N_max: set maximum number of patches. Default: None.
-- train_batc_size: Default: 8.
+- train_batch_size: Default: 8.
 - unet_n_depth: number of UNet layers. Default: 2.
 
 ## 03_predict_patches.py
@@ -114,9 +118,18 @@ Parameters:
 
 ## 05_quantify_patches.py
 For each dataset, generates a csv file containing the following information for each patch reconstructed:
-- Information content
-- structural similarity index (relative to ground truth)
-- Mean square error (relative to ground truth)
+- Information content (IC)
+- Structural similarity index (SSMI, relative to ground truth)
+- Root mean square error (RMSE, relative to ground truth)
 
 ## 06_restore_TL.py
-Restore timelapse datasets, which should be arranged as the training dataset, except that only one channel is provided, and one parameter file is provided per timepoint.
+Restore timelapse datasets, which should be arranged as the training dataset, except that only one channel is provided, and one parameter file is provided per timepoint:
+```
+__ sample_folder
+ |
+ |__ image,_t=001,_channel=ch00,.tif
+ |__ image,_t=001,_channel=ch[CCC]_params.txt
+ |__ image,_t=002,_channel=ch00,.tif
+ |__ image,_t=002,_channel=ch[CCC]_params.txt
+ |__ ...
+```
