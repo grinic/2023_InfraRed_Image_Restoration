@@ -38,11 +38,11 @@ __ sample_folder
 ```
 
 Where `image_ch0.tif`, `image_ch1.tif` are the visible and near infrared light images, respectively, and `image_channel=ch[CCC]_params.txt` contains at least the `XYZ` dimension of the tif dataset in the following format:
-`
+```
 555:ROIWidth
 555:ROIHeight
 110:Planes
-`
+```
 
 ## 01_transfer_and_fuse_patch.py
 This script extract patches of defined dimensions and creates a `Dataset` folder containing the images that will be used to train the IR2 network.
