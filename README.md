@@ -44,7 +44,7 @@ Where `image_ch0.tif`, `image_ch1.tif` are the visible and near infrared light i
 110:Planes
 ```
 
-## 01_transfer_and_fuse_patch.py
+### 01_transfer_and_fuse_patch.py
 This script extract patches of defined dimensions and creates a `Dataset` folder containing the images that will be used to train the IR2 network.
 
 Parameters:
@@ -87,7 +87,7 @@ __ sample_folder
 
 ```
 
-## 02_train_net_csbdeep.py
+### 02_train_net_csbdeep.py
 Script to train a standard UNet CARE network.
 
 Parameters:
@@ -98,7 +98,7 @@ Parameters:
 - train_batch_size: Default: 8.
 - unet_n_depth: number of UNet layers. Default: 2.
 
-## 03_predict_patches.py
+### 03_predict_patches.py
 Use the trained model to predict the patches for a list of datasets.
 Can use multiple models to compare results.
 
@@ -107,7 +107,7 @@ Parameters:
 - pathModels
 - modelNames
 
-## 04_predict_full.py
+### 04_predict_full.py
 Use the trained model to predict the whole tif images for a list of datasets.
 Can use multiple models to compare results.
 
@@ -116,13 +116,13 @@ Parameters:
 - pathModels
 - modelNames
 
-## 05_quantify_patches.py
+### 05_quantify_patches.py
 For each dataset, generates a csv file containing the following information for each patch reconstructed:
 - Information content (IC)
 - Structural similarity index (SSMI, relative to ground truth)
 - Root mean square error (RMSE, relative to ground truth)
 
-## 06_restore_TL.py
+### 06_restore_TL.py
 Restore timelapse datasets, which should be arranged as the training dataset, except that only one channel is provided, and one parameter file is provided per timepoint:
 ```
 __ sample_folder
